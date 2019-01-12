@@ -1,0 +1,85 @@
+swagger: '2.0'
+info:
+  description: Sales Notification API definition
+  version: 1.0.1
+  title: Sales Notification API definition
+  contact:
+    email: suhane1989@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: sales-notification
+  description: email users about the winter sale
+
+# REST definitions
+# @ https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+parameters:
+  emailId:
+    in: path
+    name: emailId
+    required: true
+    type: string
+
+paths:
+########################################## Sales
+  /email:
+    post:
+      tags:
+        - sales-notification
+      summary: Send email to user regarding sales
+      description: Send email to user regarding sales
+      parameters:
+        - in: body
+          name: Email Details
+          required: true
+          description: Email Details
+          schema:
+            $ref: '#/definitions/EmailDetails'
+      responses:
+        201:
+          description: Created
+        400:
+          description: KeyExists
+          
+definitions:
+  EmailId:
+    type: string
+    example: suhane1989@gmail.com
+
+  UserName:
+    type: string
+    example: Mohit Suhane
+
+  LastBoughtItem:
+    type: string
+    example: Pants
+
+  SaleIdentifier:
+    type: string
+    example: Winter
+
+  EmailDetails:
+    type: object
+    required:
+      - emailId
+      - userName
+      - saleIdentifier
+    properties:
+      emailId:
+        $ref: '#/definitions/EmailId'
+      userName:
+        $ref: '#/definitions/UserName'
+      lastBoughtItem:
+        $ref: '#/definitions/LastBoughtItem'
+      saleIdentifier:
+        $ref: '#/definitions/SaleIdentifier'                        
+
+# Added by API Auto Mocking Plugin
+host: localhost:3000
+basePath: /api
+schemes:
+- http
