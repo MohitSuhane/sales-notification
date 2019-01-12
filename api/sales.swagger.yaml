@@ -40,10 +40,8 @@ paths:
           schema:
             $ref: '#/definitions/EmailDetails'
       responses:
-        201:
-          description: Created
-        400:
-          description: KeyExists
+        200:
+          description: Email Successfully Send
           
 definitions:
   EmailId:
