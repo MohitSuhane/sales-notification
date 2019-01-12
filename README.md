@@ -1,7 +1,7 @@
 # Sales Notification
 
-API to send sale/offers for the current season.
-Using NodeJs and containerize using Docker 
+API to send email for sale/offers for the current season.
+API is developed using NodeJs and containerize using Docker 
 
 ## Installation
 ```
